@@ -47,7 +47,7 @@ Please keep your data size within 50GB.
 
 ### Feedback 
 
-If you need help (for example,install software, hardware problem), you can submit issues in [here](https://github.com/XACCNUS/Cluster/issues/new)
+If you need help (for example,install software, hardware problem), you can submit issue in [here](https://github.com/XACCNUS/Cluster/issues/new)
 
 Please join our Telegram Group for emergency help: [XACC@NUS Forum](https://github.com/XACCNUS/Cluster/issues/new).
 
