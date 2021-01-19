@@ -8,7 +8,7 @@ For researchers outside NUS, please request access through [Xilinx University Pr
 For researchers at NUS, please apply through the following link:
 [NUS XACC Account Registration ](https://forms.gle/fvfPgJypd1sSWzHm8).
 
-### Compute Server Configurations
+### Compute Node Configuration
 
 |Host    | Boards |  Quantity | Shell Version | XRT Version | Vitis Version |
 |--------|--------|-------|----------|-------------|-------------------|
@@ -23,7 +23,7 @@ Researchers at NUS could directly access the corresponding server with SSH:
 ```shell
 ssh user@xaccnodex.d2.comp.nus.edu.sg
 ```
-Researchers outside NUS need to access a jump host (which has the public IP address) at first before accessing the servers with FPGA boards. 
+Researchers outside NUS need to access a jump host (which has a public IP address) at first before accessing the servers with FPGA boards. 
 ```shell
 ssh guest@xacchead.d2.comp.nus.edu.sg # The password for guest account is Q5vwsZGytV3wwHn
 ssh user@xaccnodex.d2.comp.nus.edu.sg # Access the compute node through the head node.
