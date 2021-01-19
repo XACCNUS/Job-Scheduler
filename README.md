@@ -6,7 +6,7 @@
 For researchers outside NUS, please request access through [Xilinx University Program](https://www.xilinx.com/support/university/XUP-XACC.html).
 
 For researchers at NUS, please apply through the following link:
-[Account Registration ](https://forms.gle/fvfPgJypd1sSWzHm8) 
+[Account Registration ](https://forms.gle/fvfPgJypd1sSWzHm8).
 
 ### Compute Server Configurations
 
