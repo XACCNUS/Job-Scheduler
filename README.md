@@ -18,19 +18,19 @@ For researchers at NUS, please apply through the following link: [NUS XACC Accou
 | xaccnode3.d2.comp.nus.edu.sg |  Alveo U250 | 2 | xilinx_u250_qdma_201920_1 | 2.5.309 | Vitis 2019.2 |
 
 ### Access to the Cluster
-Researchers at NUS could directly access the corresponding server with SSH: 
+Researchers at NUS could directly access the corresponding node with SSH: 
 ```shell
-ssh user@xaccnodex.d2.comp.nus.edu.sg
+ssh username@xaccnodex.d2.comp.nus.edu.sg
 ```
 Researchers outside NUS need to access a jump host (which has a public IP address) at first before accessing the servers with FPGA boards. 
 ```shell
-ssh guest@xacchead.d2.comp.nus.edu.sg # The password for guest account is Q5vwsZGytV3wwHn
-ssh user@xaccnodex.d2.comp.nus.edu.sg # Access the compute node through the head node.
+ssh guest@xacchead.d2.comp.nus.edu.sg # The password for the guest account is Q5vwsZGytV3wwHn
+ssh username@xaccnodex.d2.comp.nus.edu.sg # Access the compute node through the head node.
 ```
 
 ### Setting the FPGA Environment
 
-Users can use the following command to setup the environment:
+Users should then use the following command to setup the environment:
 ```shell
 # XRT Env
 source /opt/xilinx/xrt/setup.sh
