@@ -32,11 +32,11 @@ ssh username@xaccnodex.d2.comp.nus.edu.sg # Access the compute node through the 
 
 Users should then use the following command to setup the environment:
 ```shell
-# XRT Env
+# Set XRT Environment
 source /opt/xilinx/xrt/setup.sh
-# For the node installed Vitis 2020.1
+# Set Vitis Environment, for the node installed Vitis 2020.1
 source  /opt/Xilinx/Vitis/2020.1/settings64.sh
-# For the node installed Vitis 2019.2
+# Set Vitis Environment, for the node installed Vitis 2019.2
 source  /opt/Xilinx/Vitis/2019.2/settings64.sh
 ```
 
