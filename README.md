@@ -43,8 +43,11 @@ source  /opt/Xilinx/Vitis/2019.2/settings64.sh
 
 ### Shared Storage
 
-```/data``` is a shared path for all computing nodes, you can use this path to store insensitive data.
-
+```/data``` is a shared path for all computing nodes.
+Users can use this path to store insensitive data.
 
 ### Feedback 
 
+
+### Acknowledgement
+We would like to thank [Xilinx](https://www.xilinx.com/) for the hardwar donation.
