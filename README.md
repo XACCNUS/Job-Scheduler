@@ -1,24 +1,14 @@
 
 
-## User Guide
+## User Guide of XACC Cluster at NUS
 
 ### Registration
 For researchers outside NUS, please request access through [Xilinx University Program](https://www.xilinx.com/support/university/XUP-XACC.html).
 
-For researchers at NUS, please apply through this link:
+For researchers at NUS, please apply through the following link:
 [Account Registration ](https://forms.gle/fvfPgJypd1sSWzHm8) 
 
-### Access the Cluster
-####For researchers outside NUS:
-
-Firstly, you need to use the guest account to access headnode
-```shell
-ssh guest@xacchead.d2.comp.nus.edu.sg # The password for guest account is Q5vwsZGytV3wwHn
-```
-After log into the headnode, you can follow the same instructions as the **For researchers at NUS** to access the computing nodes.
-####For researchers at NUS:
-
-Use the given account to access the computing node , you can find the host url in following table:
+### Compute Server Configurations
 
 |Host    | Boards |  Quantity | Shell Version | XRT Version | Vitis Version |
 |--------|--------|-------|----------|-------------|-------------------|
@@ -28,10 +18,20 @@ Use the given account to access the computing node , you can find the host url i
 | xaccnode2.d2.comp.nus.edu.sg |  Alveo U280 | 4 | xilinx_u280_xdma_201920_1 | 2.5.309 | Vitis 2019.2 |
 | xaccnode3.d2.comp.nus.edu.sg |  Alveo U250 | 2 | xilinx_u250_qdma_201920_1 | 2.5.309 | Vitis 2019.2 |
 
+### Access to the Cluster
+Researchers at NUS could directly access the corresponding server with SSH: 
+```shell
+ssh user@xaccnodex.d2.comp.nus.edu.sg
+```
+Researchers outside NUS need to access a jump host (which has the public IP address) at first before accessing the servers with FPGA boards. 
+```shell
+ssh guest@xacchead.d2.comp.nus.edu.sg # The password for guest account is Q5vwsZGytV3wwHn
+ssh user@xaccnodex.d2.comp.nus.edu.sg # Access the compute node through the head node.
+```
 
-### FPGA Environments
+### Setting the FPGA Environment
 
-All the XRT and Vitis tools are installed in the default path. User can use the following command to setup the environment:
+Users can use the following command to setup the environment:
 ```shell
 # XRT Env
 source /opt/xilinx/xrt/setup.sh
