@@ -50,4 +50,4 @@ Users can use this path to store insensitive data. Please keep your data size wi
 
 
 ### Acknowledgement
-We would like to thank [Xilinx](https://www.xilinx.com/) for the hardwar donation.
+We would like to thank [Xilinx](https://www.xilinx.com/) for the hardware donation.
