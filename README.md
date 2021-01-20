@@ -45,7 +45,7 @@ source  /opt/Xilinx/Vitis/2019.2/settings64.sh
 ```/data``` is a shared path for all compute nodes for users to store insensitive data. 
 Please keep your data size within 50GB.
 
-### Feedback 
+### Support 
 
 If you need help (e.g., software installation), you can submit issues in [here](https://github.com/XACCNUS/Cluster/issues/new).
 
