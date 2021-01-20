@@ -49,7 +49,7 @@ Please keep your data size within 50GB.
 
 If you need help (e.g., software installation), you can submit issues in [here](https://github.com/XACCNUS/Cluster/issues/new).
 
-You also can join our Telegram Group ([XACC@NUS Forum](https://github.com/XACCNUS/Cluster/issues/new)) for emergency help (e.g., registration problems).
+You also can join our Telegram Group ([XACC@NUS Forum](https://t.me/joinchat/E3BBIyP9u16fTmmH)) for emergency help (e.g., registration problems).
 
 
 ### Acknowledgement
