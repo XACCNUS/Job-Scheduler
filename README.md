@@ -11,7 +11,6 @@ For researchers at NUS, please apply through the following link: [NUS XACC Accou
 
 |Host    | Boards |  Quantity | Shell Version | XRT Version | Vitis Version |
 |--------|--------|-------|----------|-------------|-------------------|
-| xtraf1.d1.comp.nus.edu.sg    |  Alveo U50 | 1 | xilinx_u50_gen3x16_xdma_201920_3 | 2.7.766 | Vitis 2020.1 |
 | xaccnode0.d2.comp.nus.edu.sg |  Alveo U250 | 2 | xilinx_u250_xdma_201830_2 | 2.7.766 | Vitis 2020.1 |
 | xaccnode1.d2.comp.nus.edu.sg |  Alveo U250 | 2 | xilinx_u250_xdma_201830_2 | 2.7.766 | Vitis 2020.1 |
 | xaccnode2.d2.comp.nus.edu.sg |  Alveo U280 | 4 | xilinx_u280_xdma_201920_1 | 2.5.309 | Vitis 2019.2 |
@@ -38,6 +37,11 @@ source /opt/xilinx/xrt/setup.sh
 source  /opt/Xilinx/Vitis/2020.1/settings64.sh
 # Set Vitis Environment, for the node installed Vitis 2019.2
 source  /opt/Xilinx/Vitis/2019.2/settings64.sh
+# Set Vivado Environment, for the node installed Vivado 2020.1
+source  /opt/Xilinx/Vivado/2020.1/settings64.sh
+# Set Vivado Environment, for the node installed Vivado 2019.2
+source  /opt/Xilinx/Vivado/2019.2/settings64.sh
+
 ```
 
 ### Shared Storage
