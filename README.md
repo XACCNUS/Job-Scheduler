@@ -22,10 +22,6 @@ Researchers at NUS could directly access the corresponding node with SSH:
 ssh username@xaccnodex.d2.comp.nus.edu.sg
 ```
 Researchers outside NUS need to access a jump host (which has a public IP address) at first before accessing the servers with FPGA boards. 
-```shell
-ssh guest@xacchead.d2.comp.nus.edu.sg # The password for the guest account is Q5vwsZGytV3wwHn
-ssh username@xaccnodex.d2.comp.nus.edu.sg # Access the compute node through the head node.
-```
 
 ### Setting the FPGA Environment
 
