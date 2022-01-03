@@ -26,6 +26,16 @@ ssh username@xaccnodex.d2.comp.nus.edu.sg
 ```
 Researchers outside NUS need to access a jump host (which has a public IP address) at first before accessing the servers with FPGA boards. 
 
+__NOTE__: we highly recommand you to enable the SSH key based secure authentication. You can refer the following command.
+
+``` shell
+# make sure you already generated ssh key by ssh-keygen
+# replace "your_username" to your given account
+cat ~/.ssh/id_rsa.pub | ssh your_username@xacchead.d2.comp.nus.edu.sg "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys && chmod 700 ~/.ssh  && chmod 600 ~/.ssh/authorized_keys" 
+
+```
+
+
 ### Setting the FPGA Environment
 
 Users should then use the following command to setup the environment:
@@ -48,9 +58,9 @@ source  /opt/Xilinx/Vivado/2019.2/settings64.sh
 ```/data``` is a shared path for all compute nodes for users to store insensitive data. 
 Please keep your data size within 50GB.
 
-### Support 
+### Support
 
-#### Cluster environment: 
+#### Cluster environment:
 If you need help (e.g., software installation), you can submit issues in [here](https://github.com/XACCNUS/Cluster/issues/new).
 
 You also can join our Telegram Group ([XACC@NUS Forum](https://t.me/joinchat/E3BBIyP9u16fTmmH)) for emergency help (e.g., registration problems).
