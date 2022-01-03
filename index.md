@@ -107,6 +107,6 @@ srun -p u250_0 -n 1 --pty bash -i
 
 ### References
 
-_[1] UIUC, XACC Cluster Job Submission and Scheduling (https://xilinx-center.csl.illinois.edu/xacc-cluster/xacc-user-guide/xacc-job-submission-and-scheduling/)__
+_[1] UIUC, XACC Cluster Job Submission and Scheduling (https://xilinx-center.csl.illinois.edu/xacc-cluster/xacc-user-guide/xacc-job-submission-and-scheduling/)_
 
 _[2] Slurm, Slurm Tutorials (https://slurm.schedmd.com/tutorials.html)_
