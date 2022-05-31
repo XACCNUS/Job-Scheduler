@@ -1,6 +1,6 @@
 ### Introduction
 
-XACC@NUS cluster adopts virtualization and [slurm](https://slurm.schedmd.com/documentation.html) job scheduler to manage hardware resource. 
+HACC@NUS cluster adopts virtualization and [slurm](https://slurm.schedmd.com/documentation.html) job scheduler to manage hardware resource. 
 In order to run an __FPGA accelerated__ task, you must submit a slurm job request to the scheduler, by requesting how much time you want, what type of resources you require. The details of how to write a slurm job are shown in the following part.  [Here](slurm.pdf) is a command cheat sheet for using slurm [[1]](https://xilinx-center.csl.illinois.edu/xacc-cluster/xacc-user-guide/xacc-job-submission-and-scheduling/).
 
 
