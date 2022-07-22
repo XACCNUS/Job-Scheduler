@@ -13,9 +13,11 @@ e.g.,
 ```
 ~$ sinfo
 PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
-cpu*         up      30:00      2   idle u280_vm[0-1]
-u280_0       up   12:00:00      1   idle u280_vm0
-u280_1       up   12:00:00      1   idle u280_vm1
+cpu*         up      30:00      4   idle hacc-u250-[1-2],hacc-u280-[1-2]
+u250_1       up   12:00:00      1   idle hacc-u250-1
+u250_2       up   12:00:00      1   idle hacc-u250-2
+u280_1       up   12:00:00      1   idle hacc-u280-1
+u280_2       up   12:00:00      1   idle hacc-u280-2
 
 ```
 
@@ -45,64 +47,96 @@ Slurm jobs can be write as a script, we provide one [example](example.sh) as ref
 ```shell
 #!/bin/bash
 #SBATCH --chdir /tmp/
-#SBATCH --account=xtra
-# 0.  keep the above two lines for slurm env setup  
+#SBATCH --account=slurm
 
+# 0. Keep the above two lines unchanged for slurm env setup
+
+
+# Change the following username to yours
 username=xtra_test
-app=hello_world
-path=program
-fpga=binary_container_1.xclbin
-# 1. modify the above file/path name to yours
-# your program must be exsit in "/${data}/${username}/${path}/"
-# "/data" is a shared directory with the host and VMs, you can use it for transfer data/programs.
 
-# 2. we provide a shell function that can be directly used
-function prepare_on_vm
+# 1. modify the above file/path name to yours.
+# your program must be exsit in "/${data}/${username}/${path}/"
+# "/data" is a shared directory with the host and VMs, you can use it to transfer data/programs.
+# In this example, we have the following file structure:
+# /data
+#   ├── ...
+#   └── xtra_test
+#       ├── test_u250
+#       │   ├── burst_rw
+#       │   └── vadd.xclbin
+#       └── test_u280
+#           ├── burst_rw
+#           └── vadd.xclbin
+
+# To test u250 board, set path to test_u250.
+path=test_u250
+# The test_u250 path have the following host program and FPGA bitstream.
+app=burst_rw
+fpga=vadd.xclbin
+
+
+
+# 2. Setup a temp workspace in the VM. We provide the following shell function that can be directly used.
+function init_env
 {
-    # 2.1 relocate working dir on vm
+    # 2.1 Relocate working dir on vm.
     workdir=/tmp/${username}
     rm -rf ${workdir}
     mkdir -p ${workdir}
     cd ${workdir}
 
-    # 2.2 make a new direction for save the log and result
+    # 2.2 Make a new direction in /data/${username}/log/ to save the log and results.
     time_string=`date +%Y_%m_%d_%H_%M_%S`
     log_path=/data/${username}/log/${app}_test_log_${time_string}
-    mkdir  -p ${log_path}
+    mkdir -p ${log_path}
 
-    # 2.3 setup XRT environment
+    # 2.3 Setup XRT environment.
     source /opt/xilinx/xrt/setup.sh
 
-    # 2.4 scan cards (you can get the card id from scan.log)
-    /opt/xilinx/xrt/bin/xbutil  scan  > ${log_path}/scan.log
+    # 2.4 Scan cards (you can get the card id from scan.log).
+    /opt/xilinx/xrt/bin/xbutil  examine  > ${log_path}/scan.log
+}
 
+function prepare_on_vm
+{
+    init_env
     # 2.5 copy your applicaitons to vm
     # NOTE:
     #      your application files should be already in "/${data}/${username}/${path}/" path
-    #      i.e., for the user xtra_test, he need manually copy the host program "hello_world" to /data/xtra_test/program/hello_world
-    #            and fpga bitstream "binary_container_1.xclbin" to /data/xtra_test/program/hello_world
+    #      In this example, in the host side, we manually copy the host program "burst_rw" and fpga bitstream "vadd.xclbin" to "/data/xtra_test/test_u250/".
+    #            Then, in the vm side, the following script command copy them from /data to its working direction.
+
     cp /data/${username}/${path}/${app}  ${workdir} >  ${log_path}/copy.log 2>&1
     cp /data/${username}/${path}/${fpga} ${workdir} >> ${log_path}/copy.log 2>&1
     chmod +x ./${app}
 }
 
+
+
+# Call the function
 prepare_on_vm
 
-
-# 3. run your program on VMs.
+# 3. Run your program on VMs.
 ./${app} ${fpga} >  ${log_path}/exec.log 2>&1
+
+
+# 4. To hot reset the FPGA board, please call the following function.
+function reset_fpga
+{
+    board_id=$(/opt/xilinx/xrt/bin/xbutil examine | grep "\[" | awk '{print$1}' | sed 's/\[//' | sed 's/\]//')
+    /opt/xilinx/xrt/bin/xbutil reset -d ${board_id} --force
+}
+#reset_fpga >>  ${log_path}/exec.log 2>&1
 
 ```
 
-* First, we recommend you create a unique folder to store the log and results, in the above example, we use the timestamp as the folder name.
-* Second, you need to source the xrt's setup script to set up the run-time environment.
-* Third, you can copy your program and bitstream (xclbin file) from the share path (i.e., ```/data```)to the local path of VM. and execute it.
-* Finally, you can gather the log and result back to the share folder.
+
 
 __Note__ [[1]](https://xilinx-center.csl.illinois.edu/xacc-cluster/xacc-user-guide/xacc-job-submission-and-scheduling/):
 
 1. Your environmental variable will be copied from the submission node.
-2. Always use FULL paths in your scripts
+2. Always use __FULL__ paths in your scripts
 3. Make sure your script runs your code in the correct directory
 4. Make sure to source the XRT libs inside your script
 
@@ -113,13 +147,17 @@ __Note__ [[1]](https://xilinx-center.csl.illinois.edu/xacc-cluster/xacc-user-gui
 To submit the job:
 
 ```shell
-sbatch -p u250_0 example.sh
+sbatch -p u250_1 example.sh
 ```
 
 where "-p" is used to specify the VMs that you want to execute your job. It will return a unique job ID to you. Slurm also support many advanced usage, such as setting up the dealines and job dependencies, please refer to the slurm's offical documentation in [here](https://slurm.schedmd.com/sbatch.html).
 
-After subimssion, you can use ```squeue``` to query the status of your job.
-
+After subimssion, you can use ```squeue``` to query the status of your job, e.g.,
+```shell
+$ squeue 
+JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+   56    u250_1 example.     test  R       0:02      1 hacc-u250-1
+```
 
 Interactive jobs [[1]](https://xilinx-center.csl.illinois.edu/xacc-cluster/xacc-user-guide/xacc-job-submission-and-scheduling/):
 
@@ -127,7 +165,7 @@ It is possible to request an interactive job. This will log you directly into a 
 
 
 ```shell
-srun -p u250_0 -n 1 --pty bash -i
+srun -p u250_1 -n 1 --pty bash -i
 ```
 
 ### References
