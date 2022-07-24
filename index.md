@@ -55,7 +55,7 @@ Slurm jobs can be write as a script, we provide one [example](example.sh) as ref
 # Change the following username to yours
 username=xtra_test
 
-# 1. modify the above file/path name to yours.
+# 1. modify the following file/path name to yours.
 # your program must be exsit in "/${data}/${username}/${path}/"
 # "/data" is a shared directory with the host and VMs, you can use it to transfer data/programs.
 # In this example, we have the following file structure:
