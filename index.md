@@ -6,7 +6,7 @@ In order to run an __FPGA accelerated__ task, you must submit a slurm job reques
 
 ### Hardware Resources
 
-We adopt separated execution environment for each kind of FPGA cards, and you are only give the access of the node as your requested (the host url given in your account notification email). Each computing node is deployed with several virtual machines for hosting FPGA cards and executing your submitted jobs.
+Each computing node is deployed with several virtual machines (VMs) for hosting FPGA cards and executing your submitted jobs.
 
 After login to the node, you can run ```sinfo``` to see the available VMs and the information of hardware card.
 e.g., 
