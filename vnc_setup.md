@@ -3,7 +3,7 @@
 __Step 0. [init password]__ 
 
 Login your account in xacchead. run ```vncserver```, it will ask you to setup the password.
-after setting your vnc's password. kill the vncserver with the following command
+after setting your vnc's password, kill the vncserver with the following command
 
 ```bash
 vncserver -list
@@ -28,16 +28,18 @@ This procedure only need to be done once.
 
 __Step 2. [enable port forwarding]__ 
 
-You need to  exit current ssh session or connect with a new ssh session. Reconnect xacchead with port forwarding using the following command. 
+You need to exit current ssh session or connect with a new ssh session. Reconnect xacchead with port forwarding using the following command. 
 ```bash
 ssh -L 5901:localhost:5901 xxxxx@xacchead.d2.comp.nus.edu.sg
 ```
 
 Note: you should carefully select the port/vnc session, since it will have conflicts with others.
 The port number corresponds to your vnc session number.
-For example: 
-    vnc session :1 --> port 5901
-    vnc session :12 --> port 5912
+
+For example:
+
+* vnc session :1 --> port 5901
+* vnc session :12 --> port 5912
 
 In the following example, we assums the vnc session is :1.
 
