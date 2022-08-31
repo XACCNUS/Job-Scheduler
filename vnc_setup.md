@@ -54,7 +54,7 @@ __Step 4. [start vncviewer]__
 
 From your local machine, start vncviewer. The port is forwarded to your localhost.
 
-###### for linux machine:
+##### for linux machine:
 
 Install the vncviewer on your local machine.
 
@@ -68,7 +68,7 @@ Start vncviewer with localhost (port 5901 in this example) in command line.
 vncviewer 127.0.0.1:5901
 ```
 
-###### for windows:
+##### for windows:
 
 Please setup the configuration following your program instructions
 
