@@ -54,12 +54,30 @@ __Step 4. [start vncviewer]__
 
 From your local machine, start vncviewer. The port is forwarded to your localhost.
 
-#### for linux machine:
+###### for linux machine:
+
+Install the vncviewer on your local machine.
+
+```bash
+sudo apt install tigervnc-viewer # we suggest the tigervnc viewer.
+```
+
+Start vncviewer with localhost (port 5901 in this example) in command line.
 
 ```bash
 vncviewer 127.0.0.1:5901
 ```
 
-#### for windows:
+###### for windows:
 
-Please setup the configuration following your program instructions/
+Please setup the configuration following your program instructions
+
+##### NOTE:
+
+In case you lock your VNC session, it may be stall in the login screen when you login next time. You can run the following command in your ssh session to unlock your VNC session.
+
+
+```bash
+loginctl  unlock-session  $(loginctl list-sessions | grep ${USER} | awk '{print $1}')
+```
+
