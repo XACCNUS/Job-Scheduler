@@ -161,7 +161,7 @@ JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
 
 Interactive jobs [[1]](https://xilinx-center.csl.illinois.edu/xacc-cluster/xacc-user-guide/xacc-job-submission-and-scheduling/):
 
-It is possible to request an interactive job. This will log you directly into a compute node, without the need to write a job script. Once logged in, you can interact with the node and run as many commands as you’d like within the allotted time limits. Please refer to the SLURM documentation on how to run interactive jobs. As an example,  to interact with the U280 nodes:
+It is possible to request an interactive job. This will log you directly into a compute node, without the need to write a job script. Once logged in, you can interact with the node and run as many commands as you’d like within the allotted time limits. Please refer to the SLURM documentation on how to run interactive jobs. As an example,  to interact with the U250 nodes:
 
 
 ```shell
