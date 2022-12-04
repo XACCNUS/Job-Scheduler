@@ -12,12 +12,23 @@ After login to the node, you can run ```sinfo``` to see the available VMs and th
 e.g., 
 ```
 ~$ sinfo
-PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
-cpu*         up      30:00      4   idle hacc-u250-[1-2],hacc-u280-[1-2]
-u250_1       up   12:00:00      1   idle hacc-u250-1
-u250_2       up   12:00:00      1   idle hacc-u250-2
-u280_1       up   12:00:00      1   idle hacc-u280-1
-u280_2       up   12:00:00      1   idle hacc-u280-2
+PARTITION                      AVAIL  TIMELIMIT  NODES  STATE NODELIST
+cpu_only*                         up      30:00      6   idle hacc-u250-[1-4],hacc-u280-[1-2]
+frp_test                          up 2-00:00:00      1   idle hacc-u250-frp
+u250_1                            up   12:00:00      1   idle hacc-u250-1
+u250_2                            up   12:00:00      1   idle hacc-u250-2
+u250_3                            up   12:00:00      1   idle hacc-u250-3
+u250_4                            up   12:00:00      1   idle hacc-u250-4
+u250_rtl_1                        up   12:00:00      1   unk* hacc-u250-rtl-1
+u280_1                            up   12:00:00      1   idle hacc-u280-1
+u280_2                            up   12:00:00      1   idle hacc-u280-2
+amd_gpu                           up 2-00:00:00      1   idle hacc-gpu0
+u250_short_reservation_pool       up      30:00      4   idle hacc-u250-[1-4]
+u280_short_reservation_pool       up      30:00      2   idle hacc-u280-[1-2]
+u250_standard_reservation_pool    up   12:00:00      4   idle hacc-u250-[1-4]
+u280_standard_reservation_pool    up   12:00:00      2   idle hacc-u280-[1-2]
+u250_long_reservation_pool        up 2-00:00:00      4   idle hacc-u250-[1-4]
+u280_long_reservation_pool        up 2-00:00:00      2   idle hacc-u280-[1-2]
 
 ```
 
